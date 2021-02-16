@@ -1,0 +1,13 @@
+.material-icons {
+  vertical-align: text-bottom;
+  margin-right: 10px;
+  font-size: 16px;
+  color: #2572b4;
+}
+.card-header {
+  justify-content: center;
+  color: #fff;
+  background-color: #2572b4;
+  border-color: #2572b4;
+  font-size: 18px;
+}

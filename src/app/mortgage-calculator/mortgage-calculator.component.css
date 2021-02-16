@@ -1,0 +1,37 @@
+.card-header {
+  color: #fff;
+  background-color: #2572b4;
+  border-color: #2572b4;
+  font-size: 18px;
+}
+.mortgage-card {
+  border-color: #2572b4;
+}
+.btn-calculate {
+  color: #fff;
+  background-color: #2572b4;
+  font-size: 18px;
+}
+.btn-calculate:hover {
+  color: #fff;
+  background-color: #71b5f0;
+  font-size: 18px;
+}
+.mat-button-focus-overlay {
+  opacity: 1 !important;
+}
+table {
+  width: 100%;
+}
+.material-icons {
+  vertical-align: text-bottom;
+  margin-right: 10px;
+  font-size: 16px;
+  color: #2572b4;
+}
+.mat-card-header {
+  margin-bottom: 20px;
+}
+.demo-chart {
+  height: 400px;
+}

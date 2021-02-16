@@ -1,0 +1,58 @@
+<mat-card class="col-10 mortgage-card mt-5">
+  <mat-card-header class="card-header">Calculation Summary</mat-card-header>
+  <mat-card-content>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Category</th>
+      <th scope="col">Term</th>
+      <th scope="col">Amortization Period</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="material-icons">
+        help
+        </span> Number of Payments</td>
+      <td>{{summary.numberOfPaymentsTerm}}</td>
+      <td>{{summary.numberOfPaymentsAP}}</td>
+    </tr>
+    <tr>
+      <td><span class="material-icons">
+        help
+        </span> Mortgage Payment</td>
+      <td>{{summary.mortgagePaymentTerm}}</td>
+      <td>{{summary.mortgagePaymentAP}}</td>
+    </tr>
+    <tr>
+      <td><span class="material-icons">
+        help
+        </span> Prepayment</td>
+      <td>{{summary.prepaymentTerm}}</td>
+      <td>{{summary.prepaymentAP}}</td>
+    </tr>
+    <tr>
+      <td><span class="material-icons">
+        help
+        </span> Principal Payments</td>
+      <td>{{summary.principalPaymentsTerm}}</td>
+      <td>{{summary.principalPaymentsAP}}</td>
+    </tr>
+    <tr>
+      <td><span class="material-icons">
+        help
+        </span> Interest Payments</td>
+      <td>{{summary.interestPaymentTerm}}</td>
+      <td>{{summary.interestPaymentAP}}</td>
+    </tr>
+    <tr>
+      <td><span class="material-icons">
+        help
+        </span> Total Cost</td>
+      <td>{{summary.totalCostTerm}}</td>
+      <td>{{summary.totalCostAP}}</td>
+    </tr>
+  </tbody>
+</table>
+</mat-card-content>
+</mat-card>

@@ -1,0 +1,169 @@
+<div class="container">
+  <div>
+    <form name="paymentForm" class="row">
+      <mat-card class="col-5 mortgage-card mr-5">
+        <mat-card-header class="card-header">Payment Plan</mat-card-header>
+        <mat-card-content>
+          <div>
+            <span
+              class="material-icons"
+              matTooltip="The amount you expect to borrow from your financial institution. It is calculated as the purchase price of your home, minus the down payment plus any applicable mortgage loan insurance premium you have to pay."
+            >
+              help
+            </span>
+            <mat-form-field>
+              <mat-label>Mortgage Amount:</mat-label>
+              <input
+                matInput
+                [(ngModel)]="mortgageAmount"
+                name="mortgageAmount"
+                type="number"
+                ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+                required
+              />
+              <span matPrefix>$ &nbsp;</span>
+              <mat-error
+                *ngIf="paymentForm.get('mortgageAmount').hasError('required')"
+              >
+                Please enter mortgage amount.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <span class="material-icons" matTooltip="Annual interest rate for this mortgage.
+            "> help </span>
+            <mat-form-field>
+              <mat-label>Interest Rate:</mat-label>
+              <input
+                matInput
+                [(ngModel)]="interestRate"
+                name="interestRate"
+                type="number"
+                required
+              />
+              <span matSuffix>% &nbsp;</span>
+              <mat-error
+                *ngIf="paymentForm.get('interestRate').hasError('required')"
+              >
+                Please enter interest rate.
+              </mat-error>
+            </mat-form-field>
+            <div>
+              <span class="material-icons" matTooltip="The number of years and months over which you will repay this loan. The most common amortization period is 25 years. Not to be confused with the term of your loan, which is the duration of the loan agreement you signed with your financial institution and that has to be renewed regularly. Terms are generally for 1 to 10 years."> help </span>
+              <mat-form-field>
+                <mat-label>Amortization Period:</mat-label>
+                <mat-select
+                  [(ngModel)]="selectedAmortizationPeriodYear"
+                  name="year"
+                >
+                  <mat-option *ngFor="let year of years" [value]="year">
+                    {{ year }} years
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select
+                  [(ngModel)]="selectedAmortizationPeriodMonth"
+                  name="selectedAmortizationPeriodMonth"
+                >
+                  <mat-option *ngFor="let month of months" [value]="month">
+                    {{ month }} months
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div>
+              <span class="material-icons" matTooltip="By choosing an accelerated payment frequency, you can reduce your amortization period and save thousands of dollars in interest in the long run. For example, the accelerated bi-weekly payment allows you to pay half of your monthly payment every two weeks. You will therefore make 26 payments a year, the equivalent of one extra monthly payment a year."> help </span>
+              <mat-form-field>
+                <mat-label>Payment Frequency:</mat-label>
+                <mat-select
+                  [(ngModel)]="selectedPaymentFrequency"
+                  name="selectedPaymentFrequency"
+                >
+                  <mat-option
+                    *ngFor="let frequency of paymentFrequencies"
+                    [value]="frequency.value"
+                  >
+                    {{ frequency.display }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div>
+              <span class="material-icons" matTooltip="The number of term years.
+              "> help </span>
+              <mat-form-field>
+                <mat-label>Term:</mat-label>
+                <mat-select [(ngModel)]="selectedTerm" name="selectedTerm">
+                  <mat-option *ngFor="let term of terms" [value]="term">
+                    {{ term }} years
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="col-5 mortgage-card ml-5">
+        <mat-card-header class="card-header">Prepayment Plan</mat-card-header>
+        <mat-card-content>
+          <div>
+            <span class="material-icons" matTooltip="Amount that you will prepay on your mortgage. This amount will be applied to the mortgage principal balance, at a frequency of prepayments that you determine."> help </span>
+            <mat-form-field>
+              <mat-label>Prepayment Amount:</mat-label>
+              <input
+                matInput
+                [(ngModel)]="prePaymentAmount"
+                name="prePaymentAmount"
+              />
+              <span matPrefix>$ &nbsp;</span>
+            </mat-form-field>
+          </div>
+          <div>
+            <span class="material-icons" matTooltip = "The frequency under which you will make prepayments on your mortgage. The options are one time payment, yearly and the same as regular payment.
+            "> help </span>
+            <mat-form-field>
+              <mat-label>Prepayment Frequency:</mat-label>
+              <mat-select
+                [(ngModel)]="selectedPrePaymentFrequency"
+                name="selectedPrePaymentFrequency"
+              >
+                <mat-option
+                  *ngFor="let frequency of prePaymentFrequency"
+                  [value]="frequency"
+                >
+                  {{ frequency }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <span class="material-icons" matTooltip="This is the payment number that your prepayments will begin with. For a one time payment, this is the payment number that the single prepayment will be included in. All prepayments of principal are assumed to be received by your lender in time to be included in the following month's interest calculation."> help </span>
+            <mat-form-field>
+              <mat-label>Start With Payment:</mat-label>
+              <input
+                matInput
+                [(ngModel)]="startWithPayment"
+                name="startWithPayment"
+              />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <div class="col-3">
+        <button
+          mat-raised-button
+          class="btn-calculate mt-5 mat-button-focus-overlay"
+          type="submit"
+          (click)="calculate()"
+        >
+          Calculate...
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <app-summary-detail [summary]="summaryDetail"></app-summary-detail>
+  <app-summary-report [summary]="summaryDetail"></app-summary-report>
+  <div echarts [options]="chartOption" class="demo-chart"></div>
+</div>

@@ -1,0 +1,30 @@
+<mat-card class="col-10 mortgage-card mt-5">
+  <mat-card-header class="card-header">Mortgage Summary</mat-card-header>
+  <mat-card-content>
+<div>
+  <div>
+      <p>
+          &nbsp;Over the <span>{{summary.amortizationPeriod}}</span>-year amortization period, you will:
+      </p>
+      <ul>
+          <li>
+              have made <strong>{{summary.numberOfPaymentsAP}}</strong> payments of <strong>{{summary.mortgagePaymentAP}}</strong>.</li>
+
+          <li>
+              have paid <strong>{{summary.principalPaymentsAP}}</strong> in principal, <strong>{{summary.interestPaymentAP}}</strong> in interest, for a total of <strong>{{summary.totalCostAP}}</strong>.</li>
+      </ul>
+
+      <p>
+          &nbsp;Over the<span>{{summary.termPeriod}}</span>-year term, you will:
+      </p>
+      <ul>
+          <li>
+              have made <strong><span>{{summary.numberOfPaymentsTerm}}</span></strong> payments of <strong>{{summary.mortgagePaymentTerm}}</strong>.</li>
+
+          <li>
+              have paid <strong>{{summary.principalPaymentsTerm}}</strong> in principal, <strong>{{summary.interestPaymentTerm}}</strong> in interest, for a total of <strong>{{summary.totalCostTerm}}</strong>.</li>
+      </ul>
+  </div>
+</div>
+</mat-card-content>
+</mat-card>
